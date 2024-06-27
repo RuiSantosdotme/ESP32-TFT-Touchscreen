@@ -1,9 +1,9 @@
 THE EXAMPLES AVAILABLE IN THIS GITHUB REPOSITORY HAVE BEEN TESTED WITH THE FOLLOWING HARDWARE:
 
-- 1. ESP32-2432S028R 2.8 inch 240×320 also known as the Cheap Yellow Display (CYD): https://MakerAdvisor.com/tools/cyd-cheap-yellow-display-esp32-2432s028r/
-     SET UP INSTRUCTIONS: https://RandomNerdTutorials.com/cyd-lvgl/
-- 2. REGULAR ESP32 Dev Board + 2.8 inch 240x320 TFT Display: https://MakerAdvisor.com/tools/2-8-inch-ili9341-tft-240x320/ and https://MakerAdvisor.com/tools/esp32-dev-board-wi-fi-bluetooth/
-     SET UP INSTRUCTIONS: https://RandomNerdTutorials.com/esp32-tft-lvgl/
+- ESP32-2432S028R 2.8 inch 240×320 also known as the Cheap Yellow Display (CYD): https://MakerAdvisor.com/tools/cyd-cheap-yellow-display-esp32-2432s028r/
+     - SET UP INSTRUCTIONS: https://RandomNerdTutorials.com/cyd-lvgl/
+- REGULAR ESP32 Dev Board + 2.8 inch 240x320 TFT Display: https://MakerAdvisor.com/tools/2-8-inch-ili9341-tft-240x320/ and https://MakerAdvisor.com/tools/esp32-dev-board-wi-fi-bluetooth/
+     - SET UP INSTRUCTIONS: https://RandomNerdTutorials.com/esp32-tft-lvgl/
 
 If you would like to learn more about creating graphical user interfaces using the LVGL library with the ESP32, check out our latest eBook:
 - [Learn LVGL: Build GUIs for ESP32 Projects (eBook)](https://randomnerdtutorials.com/learn-lvgl-esp32-ebook/) - https://RandomNerdTutorials.com/learn-lvgl-esp32-ebook/
