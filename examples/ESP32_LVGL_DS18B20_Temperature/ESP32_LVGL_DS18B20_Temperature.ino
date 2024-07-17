@@ -72,7 +72,7 @@ static void set_temp(void * text_label_temp_value, int32_t v) {
     }
     const char degree_symbol[] = "\u00B0C";
   #else
-    float ds18b20_temp = 1.8 * sensors.getTempFByIndex(0) + 32;
+    float ds18b20_temp = sensors.getTempFByIndex(0);
     if(ds18b20_temp <= 50.0) {
       lv_obj_set_style_text_color((lv_obj_t*) text_label_temp_value, lv_palette_main(LV_PALETTE_BLUE), 0);
     }
