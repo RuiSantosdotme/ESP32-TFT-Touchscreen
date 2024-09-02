@@ -10,7 +10,7 @@
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 //  *** YOU MUST USE THE lv_conf.h AND User_Setup.h FILES PROVIDED IN THE NEXT LINKS IN ORDER TO USE THE EXAMPLES FROM RANDOM NERD TUTORIALS: https://RandomNerdTutorials.com/cyd-lvgl/ or https://RandomNerdTutorials.com/esp32-tft-lvgl/ 
-//  Install the "lvgl" library version 9.X by kisvegabor to interface with the TFT Display - https://lvgl.io/ - IMPORTANT: lv_conf.h available on the internet will probably NOT work with the examples available at Random Nerd Tutorials
+//  Install the "lvgl" library version 9.2 by kisvegabor to interface with the TFT Display - https://lvgl.io/ - IMPORTANT: lv_conf.h available on the internet will probably NOT work with the examples available at Random Nerd Tutorials
 #include <lvgl.h>
 
 //  Install the "TFT_eSPI" library by Bodmer to interface with the TFT Display - https://github.com/Bodmer/TFT_eSPI - IMPORTANT: User_Setup.h available on the internet will probably NOT work with the examples available at Random Nerd Tutorials
