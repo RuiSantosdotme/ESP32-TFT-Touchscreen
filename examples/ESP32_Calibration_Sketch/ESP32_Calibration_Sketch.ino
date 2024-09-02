@@ -42,8 +42,8 @@ unsigned long delay_start = 0;
 SPIClass touchscreenSPI = SPIClass(VSPI);
 XPT2046_Touchscreen touchscreen(XPT2046_CS, XPT2046_IRQ);
 
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT 320
 
 String s;
 
@@ -200,7 +200,7 @@ void check_calibration_results(void) {
   Serial.println("USE THE FOLLOWING COEFFICIENT VALUES TO CALIBRATE YOUR TOUCHSCREEN");
   s = String("Computed X:  alpha_x = " + String(alphaX, 3) + ", beta_x = " + String(betaX, 3) + ", delta_x = " + String(deltaX, 3) );
   Serial.println(s);
-  s = String("Computed Y:  alpha_y = " + String(alphaY, 3) + ", beta_y = " + String(betaY, 3) + ", delta_y = " + String(deltaY, 3) );
+  s = String("Computed Y:  alpha_y = " + String(-alphaY, 3) + ", beta_y = " + String(-betaY, 3) + ", delta_y = " + String(SCREEN_WIDTH-deltaY, 3) );
   Serial.println(s);
   Serial.println("******************************************************************");
   Serial.println("******************************************************************");
@@ -220,13 +220,14 @@ void setup() {
   touchscreenSPI.begin(XPT2046_CLK, XPT2046_MISO, XPT2046_MOSI, XPT2046_CS);
   touchscreen.begin(touchscreenSPI);
   // Set the Touchscreen rotation in landscape mode
-  // Note: in some displays, the touchscreen might be upside down, so you might need to set the rotation to 1: touchscreen.setRotation(1);
-  touchscreen.setRotation(3);
+  // Note: in some displays, the touchscreen might be upside down, so you might need to set the rotation to 0: touchscreen.setRotation(0);
+  touchscreen.setRotation(2);
 
   // Create a display object
   lv_display_t * disp;
   // Initialize the TFT display using the TFT_eSPI library
   disp = lv_tft_espi_create(SCREEN_WIDTH, SCREEN_HEIGHT, draw_buf, sizeof(draw_buf));
+  lv_display_set_rotation(disp, LV_DISPLAY_ROTATION_270);
 
   lv_display_instruction();
   delay_start = millis();
