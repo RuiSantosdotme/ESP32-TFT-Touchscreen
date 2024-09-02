@@ -33,8 +33,8 @@
 SPIClass touchscreenSPI = SPIClass(VSPI);
 XPT2046_Touchscreen touchscreen(XPT2046_CS, XPT2046_IRQ);
 
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT 320
 
 // Touchscreen coordinates: (x, y) and pressure (z)
 int x, y, z;
@@ -61,19 +61,19 @@ void touchscreen_read(lv_indev_t * indev, lv_indev_data_t * data) {
     float alpha_x, beta_x, alpha_y, beta_y, delta_x, delta_y;
 
     // REPLACE WITH YOUR OWN CALIBRATION VALUES » https://RandomNerdTutorials.com/touchscreen-calibration/
-    alpha_x = 0.090;
-    beta_x = 0.00;
-    delta_x = -36.414;
-    alpha_y = 0.000;
-    beta_y = 0.066;
-    delta_y = -16.414;
+    alpha_x = -0.000;
+    beta_x = 0.090;
+    delta_x = -33.771;
+    alpha_y = 0.066;
+    beta_y = 0.000;
+    delta_y = -14.632;
 
-    x = alpha_x * p.x + beta_x * p.y + delta_x;
+    x = alpha_y * p.x + beta_y * p.y + delta_y;
     // clamp x between 0 and SCREEN_WIDTH - 1
     x = max(0, x);
     x = min(SCREEN_WIDTH - 1, x);
 
-    y = alpha_y * p.x + beta_y * p.y + delta_y;
+    y = alpha_x * p.x + beta_x * p.y + delta_x;
     // clamp y between 0 and SCREEN_HEIGHT - 1
     y = max(0, y);
     y = min(SCREEN_HEIGHT - 1, y);
@@ -93,7 +93,7 @@ void touchscreen_read(lv_indev_t * indev, lv_indev_data_t * data) {
     // Print Touchscreen info about X, Y and Pressure (Z) on the Serial Monitor
     Serial.print("X = ");
     Serial.print(x);
-    Serial.print(" |");
+    Serial.print(" | Y = ");
     Serial.print(y);
     Serial.print(" | Pressure = ");
     Serial.print(z);
@@ -135,14 +135,15 @@ void setup() {
   touchscreenSPI.begin(XPT2046_CLK, XPT2046_MISO, XPT2046_MOSI, XPT2046_CS);
   touchscreen.begin(touchscreenSPI);
   // Set the Touchscreen rotation in landscape mode
-  // Note: in some displays, the touchscreen might be upside down, so you might need to set the rotation to 1: touchscreen.setRotation(1);
-  touchscreen.setRotation(3);
+  // Note: in some displays, the touchscreen might be upside down, so you might need to set the rotation to 0: touchscreen.setRotation(0);
+  touchscreen.setRotation(2);
 
   // Create a display object
   lv_display_t * disp;
   // Initialize the TFT display using the TFT_eSPI library
   disp = lv_tft_espi_create(SCREEN_WIDTH, SCREEN_HEIGHT, draw_buf, sizeof(draw_buf));
-  
+  lv_display_set_rotation(disp, LV_DISPLAY_ROTATION_270);
+    
   // Initialize an LVGL input device object (Touchscreen)
   lv_indev_t * indev = lv_indev_create();
   lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER);
