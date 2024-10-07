@@ -139,7 +139,7 @@ void get_date_and_time() {
         //Serial.println("Time information:");
         //Serial.println(payload);
         // Parse the JSON to extract the time
-        StaticJsonDocument<1024> doc;
+        JsonDocument doc;
         DeserializationError error = deserializeJson(doc, payload);
         if (!error) {
           const char* datetime = doc["datetime"];          
