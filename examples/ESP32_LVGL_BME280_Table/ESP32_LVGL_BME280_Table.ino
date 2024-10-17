@@ -1,4 +1,4 @@
-/*  Rui Santos & Sara Santos - Random Nerd Tutorials - https://RandomNerdTutorials.com/esp32-cyd-lvgl-display-bme280-data-table/
+/*  Rui Santos & Sara Santos - Random Nerd Tutorials - https://RandomNerdTutorials.com/esp32-cyd-lvgl-display-bme280-data-table/   |   https://RandomNerdTutorials.com/esp32-tft-lvgl-display-bme280-data-table/
     THIS EXAMPLE WAS TESTED WITH THE FOLLOWING HARDWARE:
     1) ESP32-2432S028R 2.8 inch 240×320 also known as the Cheap Yellow Display (CYD): https://makeradvisor.com/tools/cyd-cheap-yellow-display-esp32-2432s028r/
       SET UP INSTRUCTIONS: https://RandomNerdTutorials.com/cyd-lvgl/
