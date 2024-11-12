@@ -320,6 +320,9 @@ void get_weather_data() {
           Serial.println(error.c_str());
         }
       }
+      else {
+        Serial.println("Failed");
+      }
     } else {
       Serial.printf("GET request failed, error: %s\n", http.errorToString(httpCode).c_str());
     }
