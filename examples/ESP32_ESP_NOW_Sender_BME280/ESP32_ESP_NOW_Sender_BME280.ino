@@ -15,7 +15,7 @@
 Adafruit_BME280 bme; 
 
 // REPLACE WITH YOUR ESP RECEIVER'S MAC ADDRESS
-uint8_t broadcastAddress[] = {0x24, 0xDC, 0xC3, 0x49, 0x6A, 0x14};
+uint8_t broadcastAddress[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 // Structure to send data, must match the receiver structure
 typedef struct struct_message {
