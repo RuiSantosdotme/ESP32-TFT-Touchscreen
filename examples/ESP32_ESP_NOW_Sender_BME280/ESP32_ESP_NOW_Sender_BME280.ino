@@ -53,7 +53,7 @@ float readHumidity() {
 esp_now_peer_info_t peerInfo;
 
 // Callback when data is sent
-void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+void OnDataSent(const wifi_tx_info_t* mac_addr, esp_now_send_status_t status) {
   char macStr[18];
   Serial.print("Packet to: ");
   // Copies the receiver mac address to a string
