@@ -91,7 +91,7 @@ static void timer_cb(lv_timer_t * timer){
 }
 
 void lv_create_main_gui(void) {
-  // Get the time and date from WorldTimeAPI
+  // Get the time and date from TimeAPI.io
   while(hour==0 && minute==0 && second==0) {
     get_date_and_time();
   }
@@ -193,7 +193,7 @@ void setup() {
 }
 
 void loop() {
-  // Get the time and date from WorldTimeAPI
+  // Get the time and date from TimeAPI.io
   if(sync_time_date) {
     sync_time_date = false;
     get_date_and_time();
