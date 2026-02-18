@@ -8,7 +8,7 @@
     The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-/*  Install the "lvgl" library version 9.2 by kisvegabor to interface with the TFT Display - https://lvgl.io/
+/*  Install the "lvgl" library version 9.4 by kisvegabor to interface with the TFT Display - https://lvgl.io/
     *** IMPORTANT: lv_conf.h available on the internet will probably NOT work with the examples available at Random Nerd Tutorials ***
     *** YOU MUST USE THE lv_conf.h FILE PROVIDED IN THE LINK BELOW IN ORDER TO USE THE EXAMPLES FROM RANDOM NERD TUTORIALS ***
     FULL INSTRUCTIONS AVAILABLE ON HOW CONFIGURE THE LIBRARY: https://RandomNerdTutorials.com/cyd-lvgl/ or https://RandomNerdTutorials.com/esp32-tft-lvgl/   */
@@ -28,7 +28,7 @@
 const char* ssid = "REPLACE_WITH_YOUR_SSID";
 const char* password = "REPLACE_WITH_YOUR_PASSWORD";
 
-// Specify the timezone you want to get the time for: https://worldtimeapi.org/api/timezone
+// Specify the timezone you want to get the time for: https://timeapi.io/api/TimeZone/AvailableTimeZones
 // Timezone example for Portugal: "Europe/Lisbon"
 const char* timezone = "Europe/Lisbon";
 
@@ -128,7 +128,7 @@ void get_date_and_time() {
     HTTPClient http;
 
     // Construct the API endpoint
-    String url = String("http://worldtimeapi.org/api/timezone/") + timezone;
+    String url = String("https://timeapi.io/api/Time/current/zone?timeZone=") + timezone;
     http.begin(url);
     int httpCode = http.GET(); // Make the GET request
 
@@ -142,15 +142,11 @@ void get_date_and_time() {
         JsonDocument doc;
         DeserializationError error = deserializeJson(doc, payload);
         if (!error) {
-          const char* datetime = doc["datetime"];          
-          // Split the datetime into date and time
-          String datetime_str = String(datetime);
-          int splitIndex = datetime_str.indexOf('T');
-          current_date = datetime_str.substring(0, splitIndex);
-          current_time = datetime_str.substring(splitIndex + 1, splitIndex + 9); // Extract time portion
-          hour = current_time.substring(0, 2).toInt();
-          minute = current_time.substring(3, 5).toInt();
-          second = current_time.substring(6, 8).toInt();
+          current_date = String(doc["date"]);
+          current_time = String(doc["time"]);
+          hour = doc["hour"];
+          minute = doc["minute"];
+          second = doc["seconds"];
         } else {
           Serial.print("deserializeJson() failed: ");
           Serial.println(error.c_str());
